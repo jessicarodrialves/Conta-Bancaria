@@ -75,7 +75,7 @@ public class Conta {
 			tipoConta = "Conta Poupança";
 			break;
 		default:
-			System.out.println("Dado invalido!! Favor informar 1 - Conta corrente ou 2 - Conta poupançaS");
+			System.out.println("Dado invalido!! Favor informar 1 - Conta corrente ou 2 - Conta poupança");
 			break;
 		}
 		System.out.println("=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*= ");
