@@ -2,11 +2,22 @@ package conta;
 
 import java.util.Scanner;
 
+import conta.model.Conta;
 import conta.util.Cores;
 
 public class Menu {
     public static void main(String[] args) {
-        
+    	
+    	 int numero = 123456;
+    	 int agencia = 1234;
+    	 int tipo = 1;
+    	 String titular = "";
+    	 float saldo = 500.00f;
+    	 float valorSaque = 0.0f;
+    	 float valorDeposito = 0.0f;
+    	 
+         Conta novaConta = new Conta(numero,agencia,tipo,titular,saldo);
+
         Scanner leia = new Scanner(System.in);
 		
 		int opcao;
@@ -45,40 +56,49 @@ public class Menu {
 				
 			switch (opcao) {
 				case 1:
+					leia.nextLine();
 					System.out.println(Cores.TEXT_WHITE + "Criar Conta\n\n");
+					System.out.println("Informe o nome do Títular: ");
+					titular = leia.nextLine();
+					novaConta.setTitular(titular);
 				
-                    		break;
+					break;
 				case 2:
 					System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n\n");
-					
-                    		break;
+						novaConta.visualizar();
+					break;
 				case 3:
 					System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n\n");
-	
-                    		break;
+					
+					break;
 				case 4:
 					System.out.println(Cores.TEXT_WHITE + "Atualizar dados da Conta\n\n");
 					
-                    		break;
+					break;
 				case 5:
 					System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n\n");
 		
-                   	 	break;
+					break;
 				case 6:
 					System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
-
-                   	 	break;
+					System.out.println("Informe o valor que deseja sacar: ");
+					valorSaque = leia.nextFloat();
+					novaConta.sacar(valorSaque);
+					break;
 				case 7:
 					System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
+					System.out.println("Informe o valor que deseja depositar: ");
+					valorDeposito = leia.nextFloat();
+					novaConta.depositar(valorDeposito);
 					
-                    		break;
+					break;
 				case 8:
 					System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
 					
-                    		break;
+					break;
 				default:
 					System.out.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida!\n" + Cores.TEXT_RESET);
-                    		break;
+					break;
 			}
 		}	
     }
