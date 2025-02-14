@@ -2,7 +2,7 @@ package conta.model;
 
 import conta.util.Cores;
 
-public class Conta {
+public abstract class Conta {
 	
 	private int numero;
 	private int agencia;
@@ -54,14 +54,12 @@ public class Conta {
 			return false;
 		}else {
 			this.setSaldo(this.getSaldo() - valor); 
-			System.out.println("O novo saldo é: " + this.saldo);
  			return true;
 		}
 	}
 	
 	public void depositar(float valor) {
 		this.setSaldo(this.getSaldo() + valor);
-		System.out.println("Novo saldo : R$ " + this.saldo);
 	}
 	
 	public void visualizar() {
@@ -85,7 +83,6 @@ public class Conta {
 		System.out.println("Agencia: " + this.agencia);
 		System.out.println("Tipo de conta: " + tipoConta);
 		System.out.println("Saldo: " + this.saldo);
-		System.out.println("=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*= ");
 
 	}
 }
