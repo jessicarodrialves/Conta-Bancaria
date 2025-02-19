@@ -1,9 +1,7 @@
 package conta;
-
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import conta.controller.ContaController;
 import conta.model.ContaCorrente;
 import conta.model.ContaPoupanca;
@@ -20,13 +18,12 @@ public class Menu {
 		float limite;
     	int opcao;
     	int numero;
+    	int numeroDestino;
+    	float valor;
     	
     	System.out.println("\n Criar Contas");
-    	
     	 
     	ContaController contas = new ContaController();
-    	
-//    	ContaCorrente cp3 = new ContaCorrente(numero, agencia, tipo, titular, saldo, limite)
     	
     	ContaCorrente cc1 = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000f, 100.0f);
     	contas.cadastrar(cc1);
@@ -192,20 +189,47 @@ public class Menu {
 					break;
 				case 6:
 					System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
-					System.out.println("Informe o valor que deseja sacar: ");
-					//valorSaque = leia.nextFloat();
+					System.out.println("Digite o número da conta: ");
+					numero = leia.nextInt();
+					
+						do {
+							System.out.println("Digite o valor do Saque (R$): ");
+							valor = leia.nextFloat();
+						}while(valor <= 0);
+						contas.sacar(numero, valor);
+						
 					keyPress();
 
 					break;
 				case 7:
 					System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
-					System.out.println("Informe o valor que deseja depositar: ");
-					//valorDeposito = leia.nextFloat();
+					System.out.println("Digite o número da conta: ");
+					numero = leia.nextInt();
+					
+					do {
+						System.out.println("Digite o valor do Depósito (R$): ");
+						valor = leia.nextFloat();
+					}while(valor <=0);
+					
+					contas.depositar(numero, valor);
 					keyPress();
 					
 					break;
 				case 8:
 					System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
+					
+					System.out.println("Digite o Número da Conta de Origem: ");
+					numero = leia.nextInt();
+					
+					System.out.println("Digite o Número da Conta de Destino: ");
+					numeroDestino = leia.nextInt();
+					
+					do {
+						System.out.println("Digite o Valor da Transferência (R$): ");
+						valor = leia.nextFloat();
+					}while(valor <= 0);
+					
+					contas.transferir(numero, numeroDestino, valor);
 					keyPress();
 
 					break;
